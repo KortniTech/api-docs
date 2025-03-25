@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roster Upload API Documentation</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 40px;">
+  <h1>Roster Upload API</h1>
+  <p><strong>POST</strong> <code>/api/rosters/import</code></p>
+
+  <h2>Request Parameters</h2>
+  <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <thead style="background-color: #f2f2f2;">
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Required</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>file</code></td>
+        <td>file</td>
+        <td>✅</td>
+        <td>The roster file in <code>.csv</code> or <code>.xml</code> format.</td>
+      </tr>
+      <tr>
+        <td><code>team_id</code></td>
+        <td>string</td>
+        <td>✅</td>
+        <td>The unique identifier for the team.</td>
+      </tr>
+      <tr>
+        <td><code>league_id</code></td>
+        <td>string</td>
+        <td>✅</td>
+        <td>The unique identifier for the league.</td>
+      </tr>
+      <tr>
+        <td><code>season</code></td>
+        <td>string</td>
+        <td>❌</td>
+        <td>The season to apply the roster to (e.g., <code>2025</code>). Defaults to current season.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Example Request (cURL)</h2>
+  <pre>
+curl -X POST https://api.scorepadnow.com/api/rosters/import \
+  -H "Authorization: Bearer YOUR_API_TOKEN" \
+  -F "file=@oakland_roster.csv" \
+  -F "team_id=144" \
+  -F "league_id=mlb" \
+  -F "season=2025"
+  </pre>
+
+  <h2>Success Response</h2>
+  <pre>
+{
+  "status": "success",
+  "message": "Roster imported successfully.",
+  "team": {
+    "team_id": "144",
+    "name": "Oakland Athletics"
+  },
+  "players_imported": 25
+}
+  </pre>
+</body>
+</html>
