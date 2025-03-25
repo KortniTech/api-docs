@@ -47,27 +47,6 @@
     </tbody>
   </table>
 
-  <h2>Example Request (cURL)</h2>
-  <pre>
-curl -X POST https://api.scorepadnow.com/api/rosters/import \
-  -H "Authorization: Bearer YOUR_API_TOKEN" \
-  -F "file=@oakland_roster.csv" \
-  -F "team_id=144" \
-  -F "league_id=mlb" \
-  -F "season=2025"
-  </pre>
-
-  <h2>Success Response</h2>
-  <pre>
-{
-  "status": "success",
-  "message": "Roster imported successfully.",
-  "team": {
-    "team_id": "144",
-    "name": "Oakland Athletics"
-  },
-  "players_imported": 25
-}
-  </pre>
+ 
 </body>
 </html>
